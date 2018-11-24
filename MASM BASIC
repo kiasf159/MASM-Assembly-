@@ -1,4 +1,4 @@
-#MASM
+# MASM
 
 INCLUDE Irvine32.inc
 .data
