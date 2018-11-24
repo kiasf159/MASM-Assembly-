@@ -1,3 +1,9 @@
+---
+layout:post
+title:MASM Basic
+---
+
+
 INCLUDE Irvine32.inc
 .data
 
