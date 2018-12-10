@@ -1,0 +1,12 @@
+INCLUDE Irvine32.inc
+.data
+  byteVal BYTE 6Ch
+.code
+main PROC
+	 mov al, byteVal
+  movzx eax, al ; eax = 0000006Ch
+  call DumpRegs
+	
+	exit
+main ENDP
+END main
