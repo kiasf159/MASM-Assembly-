@@ -1,0 +1,21 @@
+INCLUDE Irvine32.inc
+
+.data
+	Xval DWORD 10h
+	Yval DWORD 20h
+	Zval DWORD 30h
+	Rval DWORD 0h
+.code
+main PROC
+	mov eax, Xval 
+	mov ebx, Yval
+	mov ecx, Zval
+	neg ebx
+	add ebx, Zval
+	sub eax, ebx
+	mov Rval, eax
+	call DumpRegs
+	
+	exit
+main ENDP
+END main
