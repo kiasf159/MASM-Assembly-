@@ -1,0 +1,28 @@
+.data
+	filename byte 80 DUP(0)
+	bytecount dword ?
+.code
+main PROC
+	mov edx, offset filename
+	mov ecx, sizeof filename
+	call readstring 
+	mov bytecount, eax
+	mov ecx, bytecount
+	mov esi, 0
+	L1:
+		movzx eax, filename[esi]
+		push eax
+		inc esi
+		Loop L1
+	mov ecx, bytecount
+	mov esi, 0
+	L2:
+		pop eax;
+		mov filename[esi], al
+		inc esi
+		Loop L2
+
+	mov edx, offset filename
+	mov ecx, sizeof filename
+	call writestring
+	call crlf
