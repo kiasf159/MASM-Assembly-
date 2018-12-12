@@ -1,0 +1,16 @@
+.data
+	filename byte 80 dup(0)
+.code
+main PROC
+	
+	mov edx, offset filename
+	mov ecx, sizeof filename - 1
+	call readstring
+	mov eax, [edx]
+	call writestring
+	
+	exit
+
+	
+main ENDP
+END main
