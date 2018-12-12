@@ -1,0 +1,30 @@
+.data
+	array1 dword 5 dup(0)
+.code
+main PROC
+	
+	mov ecx, LENGTHOF array1
+	L1:
+		call Readdec
+		push eax
+		LOOP L1
+
+	mov ecx, LENGTHOF array1
+	mov esi, offset array1
+	L2:
+		pop eax
+		mov [esi], eax
+		add esi, type array1
+		LOOP L2
+
+	mov ecx, LENGTHOF array1
+	mov esi, offset array1
+	L3:
+		mov eax, [esi]
+		add esi, type array1
+		call writedec
+		call crlf
+		LOOP L3
+	exit	
+main ENDP
+END main
