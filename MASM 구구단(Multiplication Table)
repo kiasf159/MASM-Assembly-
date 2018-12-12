@@ -1,0 +1,55 @@
+INCLUDE Irvine32.inc                    
+
+.DATA
+str1 BYTE " X ", 0		; 2 X 2 = 4 형식으로 출력
+str2 BYTE " = ", 0
+num1 DWORD 0
+num2 DWORD 1
+.CODE  
+
+MAIN PROC
+
+INERLOOP = 99
+OUTERLOOP = 99
+
+mov ecx,OUTERLOOP            
+ 
+OUTER_LOOP:
+push ecx                                   	; for double loop
+
+inc num1
+mov num2, 1
+
+mov ecx,INERLOOP      
+
+INER_LOOP:
+			mov eax, num1
+			call WriteDec   ; eax 값 출력
+	
+			mov edx, OFFSET str1                                 
+			call WriteString                             ; edx에서 시작하는 문자열 출력
+			
+			mov eax, num2
+			call WriteDec
+
+			mov edx, OFFSET str2                                 
+			call WriteString
+
+			mov eax,num1
+			mul num2
+			call WriteDec
+			call crlf
+
+			inc num2
+			
+			
+LOOP INER_LOOP                              	; 안쪽 루프(반복문)
+call Crlf       		                  ; newline
+
+pop ecx                               	; for double loop
+LOOP OUTER_LOOP                             	; 바깥쪽 루프(반복문)
+ 
+exit                                        
+
+MAIN ENDP
+END MAIN
