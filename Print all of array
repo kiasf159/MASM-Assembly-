@@ -1,0 +1,16 @@
+.data
+	array dword 2,4,6,8,10
+.code
+main PROC
+	
+	mov ecx, LENGTHOF array
+	mov esi, offset array
+	L1:
+	mov eax, [esi]
+	call writedec
+	call crlf
+	add esi, type array
+	LOOP L1
+exit
+main ENDP
+END main
