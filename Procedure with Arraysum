@@ -1,0 +1,26 @@
+; Difference of Function and Procedure
+; 함수는 반환값이 있으나 프로시저는 반환값이 없다.
+; Function has return value(int, char ..), but Procedure doesn't have return value(just address return) . 
+
+INCLUDE Irvine32.inc
+.data
+	array1 DWORD 10,20,30,40
+.code
+main PROC
+	call ArraySum
+	call Writeint
+
+ArraySum PROC
+	mov eax, 0
+	mov esi, OFFSET array1
+	mov ecx, LENGTHOF array1
+	L1:
+		add eax, [esi]
+		add esi, type array1
+		Loop L1
+	ret
+ArraySum ENDP
+	
+	exit
+main ENDP
+END main
