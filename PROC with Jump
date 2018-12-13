@@ -1,0 +1,27 @@
+INCLUDE Irvine32.inc
+.data
+	score dword ?
+	str1 byte "PASS", 0
+	str2 byte "FAIL", 0
+.code
+main PROC
+	
+	call readint
+	mov score, eax
+	mov ebx, +70
+	cmp score, ebx
+	jl L1 ; score < 70 -> Jump L1
+	mov edx, offset str1
+	mov ecx, sizeof str1
+	call writestring
+	jmp OUT_LABEL ; skip L1
+L1:
+	mov edx, offset str2
+	mov ecx, sizeof str2
+	call writestring
+OUT_LABEL:
+	call crlf
+	
+	exit
+main ENDP
+END main
