@@ -1,0 +1,4 @@
+; call DumpRegs
+; Zero Flag = 1이면 값이 0
+; Carry Flag = MSB(최상위비트)가 자리 올림 or 자리 내림이 발생할 때 1
+; Sign Flag = 1이면 음수, 0이면 양수
