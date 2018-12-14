@@ -9,7 +9,8 @@ INCLUDE Irvine32.inc
 main PROC
 	call ArraySum
 	call Writeint
-
+	exit
+main ENDP
 ArraySum PROC
 	mov eax, 0
 	mov esi, OFFSET array1
@@ -20,7 +21,5 @@ ArraySum PROC
 		Loop L1
 	ret
 ArraySum ENDP
-	
-	exit
-main ENDP
+
 END main
