@@ -1,0 +1,37 @@
+INCLUDE Irvine32.inc
+.data
+	array1 dword 5 dup(0)
+	
+.code
+main PROC
+	mov ecx, LENGTHOF array1
+	L1:
+		call readint
+		push eax
+		LOOP L1
+	call ArraySum
+	call Writeint	
+	exit
+main ENDP
+ArraySum PROC
+	
+	mov esi, offset array1
+	mov ecx, LENGTHOF array1
+	pop ebx ; save return address 
+	L2:
+		pop eax
+		mov [esi], eax
+		add esi, type array1
+		Loop L2
+	mov esi, offset array1
+	mov ecx, LENGTHOF array1
+	mov eax, 0
+	L3:
+		add eax, [esi]
+		add esi, type array1
+		Loop L3
+	push ebx ;ret address
+	ret
+ArraySum ENDP
+
+END main
