@@ -1,0 +1,14 @@
+INCLUDE Irvine32.inc
+
+.data
+
+.code
+main PROC
+mov eax, 10101010h
+mov ebx, 01010101h
+mov ecx, 11111111h ; subnet 255.255.255.0 AND Logical
+AND eax, ebx
+OR eax, ebx
+XOR ecx, eax
+NOT ebx
+call WriteHex
