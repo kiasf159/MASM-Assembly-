@@ -1,3 +1,9 @@
+.386
+.model flat, stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode : DWORD
+; Visual Studio 2017 Version MASM
+
 TITLE Integer Summation Program  (Sum1.asm)
 ; This program prompts the user for three integers,
 ; stores tthem in an array, calculates the sum of the array,
