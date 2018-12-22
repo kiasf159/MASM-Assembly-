@@ -1,0 +1,55 @@
+.386
+.model flat, stdcall
+.stack 4096
+ExitProcess PROTO, dwExitCode : DWORD
+
+INCLUDE Irvine32.inc
+
+.data 
+	array1 SDWORD 10 DUP(?)
+	noneStr BYTE "None of the numbers is greater than 10", 0
+	str1 BYTE "첫번째 10보다 큰 정수는 ",0
+	str2 BYTE "번째 입니다.", 0  ;-> 몇 번째이다 = 전체 배열의 크기 LENGOFTH - ecx + 1 이 된다.
+
+.code
+main PROC
+
+Keyboard_Input:
+	mov ecx, LENGTHOF array1
+	mov esi, 0
+	L1:
+		call ReadInt
+		mov array1[esi], eax
+		add esi, TYPE array1
+		LOOP L1
+		
+Find_Integer_GT10:
+	mov ecx, LENGTHOF array1
+	mov esi, 0
+	L2:
+		mov eax, array1[esi]
+		mov ebx, 10
+		cmp ebx, eax   
+		JL Found
+		add esi, TYPE array1
+		LOOP L2
+
+NoFound:        
+	mov edx, OFFSET noneStr
+	call WriteString
+	exit
+
+Found:
+	mov edx, OFFSET str1
+	call WriteString
+
+	mov eax, LENGTHOF array1
+	sub eax, ecx
+	add eax, 1
+	call WriteDec
+	mov edx, OFFSET str2
+	call WriteString
+	exit
+
+main ENDP
+END main
